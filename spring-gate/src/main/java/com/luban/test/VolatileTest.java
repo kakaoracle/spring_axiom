@@ -1,8 +1,6 @@
 package com.luban.test;
 
-import java.util.Hashtable;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 public class VolatileTest {
 	private  static  volatile int race=0;

@@ -260,16 +260,24 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 	 */
 	public void processConfigBeanDefinitions(BeanDefinitionRegistry registry) {
 		List<BeanDefinitionHolder> configCandidates = new ArrayList<>();
+		// 获取所有已经或者内置的bd
 		String[] candidateNames = registry.getBeanDefinitionNames();
 
+		// 这里就是解析congfig.class类,而用循环的原因是有可能提供多个config类
 		for (String beanName : candidateNames) {
+			// 根据名字得到db,如果一个类已经是db了则就不再解析了
 			BeanDefinition beanDef = registry.getBeanDefinition(beanName);
+			// 判断是否是config配置类(即使不加@configuration注解也能判断出来)
+			// 方法是main入口参数类,最后被register为AnnotatedGenericBeanDefinition abd = new AnnotatedGenericBeanDefinition(beanClass);
+
+			// beanDefinition母亲是AttributeAccessor,有attributeNames属性,任何bd如果被解析过,则该map会存入("configurationClass","lite/full")
 			if (ConfigurationClassUtils.isFullConfigurationClass(beanDef) ||
 					ConfigurationClassUtils.isLiteConfigurationClass(beanDef)) {
 				if (logger.isDebugEnabled()) {
 					logger.debug("Bean definition has already been processed as a configuration class: " + beanDef);
 				}
 			}
+			// 判断有无被解析过
 			else if (ConfigurationClassUtils.checkConfigurationClassCandidate(beanDef, this.metadataReaderFactory)) {
 				configCandidates.add(new BeanDefinitionHolder(beanDef, beanName));
 			}
