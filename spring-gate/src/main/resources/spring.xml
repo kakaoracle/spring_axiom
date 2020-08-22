@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+		>
+	<bean id="beanService" class="com.luban.service.BeanService" ></bean>
+	<bean id="beanServce1" class="com.luban.service.BeanService1" ></bean>
+
+
+	<bean id="zl0"  class="com.luban.service.ZLService"></bean>
+	<bean id="zl1" class="com.luban.service.ZLService1"></bean>
+</beans>
