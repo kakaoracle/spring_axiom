@@ -157,6 +157,7 @@ public interface ConfigurableListableBeanFactory
 	 * Call {@link #destroySingletons()} for full cleanup in this case.
 	 * @see #destroySingletons()
 	 */
+	// 直接ctrl+alt+b只有一个实现类
 	void preInstantiateSingletons() throws BeansException;
 
 }

@@ -558,6 +558,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// 如果instanceWrapper为null,就创建
 		if (instanceWrapper == null) {
 			// 第一件事:推断构造方法
+			// 里面第二次调用后置处理器,点进去
 			instanceWrapper = createBeanInstance(beanName, mbd, args);
 		}
 		final Object bean = instanceWrapper.getWrappedInstance();
